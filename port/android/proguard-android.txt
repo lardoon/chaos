@@ -1,0 +1,5 @@
+
+-keep class chaos.app.ChaosView {
+    public static void *(...);
+    public static boolean *(...);
+}

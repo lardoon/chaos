@@ -1,0 +1,55 @@
+#LOCAL_PATH := $(call my-dir)
+LOCAL_PATH := @CMAKE_CURRENT_SOURCE_DIR@
+
+BUILD_PATH := @RELATIVE_CMAKE_BINARY_DIR@
+BUILD_PATH_FROM_SOURCE := @RELATIVE_BUILD_FROM_SOURCE@
+CFLAGS ?= @CMAKE_C_FLAGS@
+
+include $(CLEAR_VARS)
+LOCAL_CFLAGS := $(CFLAGS)
+LOCAL_MODULE    := chaos
+LOCAL_SRC_FILES := @CHAOS_SRC@
+
+LOCAL_SRC_FILES += $(BUILD_PATH_FROM_SOURCE)/chaos/spelldata.c
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../
+LOCAL_C_INCLUDES += $(BUILD_PATH)
+
+include $(BUILD_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE    := gfx
+CP := $(BUILD_PATH)/$(LOCAL_MODULE)
+GLOBBED_GFX := $(wildcard $(CP)/palette*/*.c)
+LOCAL_SRC_FILES := $(GLOBBED_GFX:$(BUILD_PATH)%=$(BUILD_PATH_FROM_SOURCE)%)
+LOCAL_C_INCLUDES := $(BUILD_PATH)
+
+include $(BUILD_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE    := translate
+CP := $(BUILD_PATH)/lang
+GLOBBED_GFX := $(wildcard $(CP)/*.c)
+LOCAL_SRC_FILES := $(GLOBBED_GFX:$(BUILD_PATH)%=$(BUILD_PATH_FROM_SOURCE)%)
+LOCAL_C_INCLUDES := $(BUILD_PATH)
+
+include $(BUILD_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_CFLAGS := -Wall $(CFLAGS)
+LOCAL_LDLIBS := -llog -lGLESv1_CM
+LOCAL_STATIC_LIBRARIES    := chaos gfx translate
+ifeq ($(CFLAGS),-pg)
+LOCAL_STATIC_LIBRARIES    += android-ndk-profiler
+LOCAL_CFLAGS += -DPROFILE
+endif
+LOCAL_MODULE    := chaos_native
+LOCAL_SRC_FILES := jni/chaos_jni.c jni/routines.c jni/unused.c
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../
+LOCAL_C_INCLUDES += $(BUILD_PATH)
+
+include $(BUILD_SHARED_LIBRARY)
+
+ifeq ($(CFLAGS),-pg)
+$(call import-module,android-ndk-profiler)
+endif

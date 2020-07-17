@@ -1,0 +1,76 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-01-19 17:24+0100\n"
+"PO-Revision-Date: 2015-01-19 17:24+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=((n == 1) ? 0 : 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.0dev\n"
+
+msgctxt "app_name"
+msgid "Chaos Battle Of Wizards"
+msgstr ""
+
+msgctxt "title_settings"
+msgid "Advanced Settings"
+msgstr "Ajustes Avanzados"
+
+msgctxt "pixels_enabled"
+msgid "Clear Pixel Mode"
+msgstr "Modo de Pixeles"
+
+msgctxt "pixels_enabled_summary"
+msgid "Use a more traditional blocky pixel style when scaled up"
+msgstr "Un estilo más tradicional con pixeles bien definidos"
+
+msgctxt "pixels_disabled_summary"
+msgid "Interpolate between the scaled up pixels, giving a smoother look"
+msgstr "Bordes suaves con los gráficos interpolados entre pixeles"
+
+msgctxt "input_settings"
+msgid "Gamepad Settings"
+msgstr "Ajustes de Mandos"
+
+msgctxt "press_key_prompt"
+msgid "Press a button..."
+msgstr "Pulsa un botón"
+
+msgctxt "key_clear"
+msgid "Clear"
+msgstr "Cancelar"
+
+msgctxt "key_a"
+msgid "Accept"
+msgstr "Aceptar"
+
+msgctxt "key_b"
+msgid "Back"
+msgstr "Atrás"
+
+msgctxt "key_select"
+msgid "Select Next"
+msgstr "Seleccionar Siguiente"
+
+msgctxt "key_start"
+msgid "Start"
+msgstr "Empezar"
+
+msgctxt "key_r"
+msgid "Examine"
+msgstr "Examinar"
+
+msgctxt "key_l"
+msgid "Highlight"
+msgstr "Resaltar"
+

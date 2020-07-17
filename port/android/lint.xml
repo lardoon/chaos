@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="UnusedResources">
+        <ignore path="res/raw/urgh.ogg" />
+        <ignore path="res/raw/beam.ogg" />
+        <ignore path="res/raw/chosen.ogg" />
+        <ignore path="res/raw/cpustart.ogg" />
+        <ignore path="res/raw/electro.ogg" />
+        <ignore path="res/raw/fire.ogg" />
+        <ignore path="res/raw/gooey.ogg" />
+        <ignore path="res/raw/justice.ogg" />
+        <ignore path="res/raw/menu.ogg" />
+        <ignore path="res/raw/range.ogg" />
+        <ignore path="res/raw/scream.ogg" />
+        <ignore path="res/raw/spellstep.ogg" />
+        <ignore path="res/raw/spellsuccess.ogg" />
+    </issue>
+    <issue id="MissingPrefix">
+        <ignore path="AndroidManifest.xml" />
+    </issue>
+</lint>

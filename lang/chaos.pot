@@ -1,0 +1,585 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-02 12:13+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "(DEAD)"
+msgstr ""
+
+msgid "ASLEEP"
+msgstr ""
+
+msgid "BLIND"
+msgstr ""
+
+msgid "OUT OF RANGE"
+msgstr ""
+
+msgid "NO LINE OF SIGHT"
+msgstr ""
+
+msgid "SPELL FAILS"
+msgstr ""
+
+msgid "SPELL SUCCEEDS"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "COMBAT="
+msgstr ""
+
+msgid "RANGED COMBAT="
+msgstr ""
+
+msgid "RANGE="
+msgstr ""
+
+msgid "DEFENCE="
+msgstr ""
+
+msgid "MOVEMENT ALLOWANCE="
+msgstr ""
+
+msgid "MANOEUVRE RATING="
+msgstr ""
+
+msgid "MAGIC RESISTANCE="
+msgstr ""
+
+msgid "CASTING CHANCE="
+msgstr ""
+
+msgid "SPELLS="
+msgstr ""
+
+msgid "ABILITY="
+msgstr ""
+
+msgid "KNIFE"
+msgstr ""
+
+msgid "SWORD"
+msgstr ""
+
+msgid "ARMOUR"
+msgstr ""
+
+msgid "SHIELD"
+msgstr ""
+
+msgid "FLYING"
+msgstr ""
+
+msgid "SHADOW"
+msgstr ""
+
+msgid "(CHAOS "
+msgstr ""
+
+msgid "(LAW "
+msgstr ""
+
+msgid "MOUNT"
+msgstr ""
+
+msgid "UNDEAD"
+msgstr ""
+
+msgid "EXAMINE SPELL"
+msgstr ""
+
+msgid "SELECT SPELL"
+msgstr ""
+
+msgid "EXAMINE BOARD"
+msgstr ""
+
+msgid "CONTINUE WITH GAME"
+msgstr ""
+
+msgid "QUIT GAME"
+msgstr ""
+
+msgid "REALLY QUIT? "
+msgstr ""
+
+msgid "ENGAGED TO ENEMY"
+msgstr ""
+
+msgid "DISMOUNT WIZARD? "
+msgstr ""
+
+msgid "MOVEMENT RANGE="
+msgstr ""
+
+msgid "(FLYING)"
+msgstr ""
+
+msgid "RANGED COMBAT,RANGE="
+msgstr ""
+
+msgid "CONTINUE THE BATTLE?"
+msgstr ""
+
+msgid "YES"
+msgstr ""
+
+msgid "NO"
+msgstr ""
+
+msgid "PRESS "
+msgstr ""
+
+msgid "THE CONTEST IS DRAWN BETWEEN"
+msgstr ""
+
+msgid "'S TURN"
+msgstr ""
+
+msgid " MEDITATES"
+msgstr ""
+
+msgid "MOVEMENT POINTS LEFT="
+msgstr ""
+
+msgid "UNDEAD-CANNOT BE ATTACKED"
+msgstr ""
+
+msgid "'S CREATIONS"
+msgstr ""
+
+msgid "PRESS START TO END TURN"
+msgstr ""
+
+msgid "THE WINNER IS:"
+msgstr ""
+
+msgid "END"
+msgstr ""
+
+msgid "Round Limit"
+msgstr ""
+
+msgid "Old Bugs"
+msgstr ""
+
+msgid "New Features"
+msgstr ""
+
+msgid "Sound On "
+msgstr ""
+
+msgid "Sound Test"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "ON "
+msgstr ""
+
+msgid "OFF"
+msgstr ""
+
+msgid "DEFAULT"
+msgstr ""
+
+msgid "OFF  "
+msgstr ""
+
+msgid "GAME OPTIONS"
+msgstr ""
+
+msgid "BACK"
+msgstr ""
+
+msgid "MORE OPTIONS"
+msgstr ""
+
+msgid "Computer "
+msgstr ""
+
+msgid "Human     "
+msgstr ""
+
+msgid "How many players?"
+msgstr ""
+
+msgid "NEW SPELL FOR "
+msgstr ""
+
+msgid "DONE"
+msgstr ""
+
+msgid "ILLUSION? "
+msgstr ""
+
+msgid "Spells cast as illusions never fail but can be disbelieved"
+msgstr ""
+
+msgid " HERE OR "
+msgstr ""
+
+msgid " TO GO BACK"
+msgstr ""
+
+msgid "'S SPELLS"
+msgstr ""
+
+msgid "CHAOS -THE BATTLE OF WIZARDS"
+msgstr ""
+
+msgid "By Julian Gollop"
+msgstr ""
+
+msgid " version"
+msgstr ""
+
+msgid "by Quirky"
+msgstr ""
+
+msgid "DEBUG BUILD"
+msgstr ""
+
+msgid "Tap to Start"
+msgstr ""
+
+msgid "Press "
+msgstr ""
+
+msgid "START"
+msgstr ""
+
+msgid "OPTIONS"
+msgstr ""
+
+msgid "CONTINUE"
+msgstr ""
+
+msgid "S"
+msgstr ""
+
+msgid "MENU"
+msgstr ""
+
+msgid "RIGHT"
+msgstr ""
+
+msgid "LEFT"
+msgstr ""
+
+msgid "UP"
+msgstr ""
+
+msgid "DOWN"
+msgstr ""
+
+msgid "SEARCH"
+msgstr ""
+
+msgid "L"
+msgstr ""
+
+msgid "TOUCH"
+msgstr ""
+
+msgid "spellName"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Disbelieve"
+msgstr ""
+
+msgid "Meditate"
+msgstr ""
+
+msgid "King Cobra"
+msgstr ""
+
+msgid "Dire Wolf"
+msgstr ""
+
+msgid "Goblin"
+msgstr ""
+
+msgid "Crocodile"
+msgstr ""
+
+msgid "Troll"
+msgstr ""
+
+msgid "Faun"
+msgstr ""
+
+msgid "Lion"
+msgstr ""
+
+msgid "Elf"
+msgstr ""
+
+msgid "Orc"
+msgstr ""
+
+msgid "Bear"
+msgstr ""
+
+msgid "Gorilla"
+msgstr ""
+
+msgid "Ogre"
+msgstr ""
+
+msgid "Hydra"
+msgstr ""
+
+msgid "Giant Rat"
+msgstr ""
+
+msgid "Giant"
+msgstr ""
+
+msgid "Horse"
+msgstr ""
+
+msgid "Unicorn"
+msgstr ""
+
+msgid "Centaur"
+msgstr ""
+
+msgid "Pegasus"
+msgstr ""
+
+msgid "Gryphon"
+msgstr ""
+
+msgid "Manticore"
+msgstr ""
+
+msgid "Bat"
+msgstr ""
+
+msgid "Green Dragon"
+msgstr ""
+
+msgid "Red Dragon"
+msgstr ""
+
+msgid "Golden Dragon"
+msgstr ""
+
+msgid "Harpy"
+msgstr ""
+
+msgid "Eagle"
+msgstr ""
+
+msgid "Vampire"
+msgstr ""
+
+msgid "Ghost"
+msgstr ""
+
+msgid "Spectre"
+msgstr ""
+
+msgid "Wraith"
+msgstr ""
+
+msgid "Skeleton"
+msgstr ""
+
+msgid "Zombie"
+msgstr ""
+
+msgid "Gooey Blob"
+msgstr ""
+
+msgid "Magic Fire"
+msgstr ""
+
+msgid "Magic Wood"
+msgstr ""
+
+msgid "Shadow Wood"
+msgstr ""
+
+msgid "Magic Castle"
+msgstr ""
+
+msgid "Dark Citadel"
+msgstr ""
+
+msgid "Wall"
+msgstr ""
+
+msgid "Magic Bolt"
+msgstr ""
+
+msgid "Blind"
+msgstr ""
+
+msgid "Lightning"
+msgstr ""
+
+msgid "Magic Sleep"
+msgstr ""
+
+msgid "Vengeance"
+msgstr ""
+
+msgid "Justice"
+msgstr ""
+
+msgid "Dark Power"
+msgstr ""
+
+msgid "Decree"
+msgstr ""
+
+msgid "Magic Shield"
+msgstr ""
+
+msgid "Magic Armour"
+msgstr ""
+
+msgid "Magic Sword"
+msgstr ""
+
+msgid "Magic Knife"
+msgstr ""
+
+msgid "Magic Bow"
+msgstr ""
+
+msgid "Magic Wings"
+msgstr ""
+
+msgid "Law 1"
+msgstr ""
+
+msgid "Law 2"
+msgstr ""
+
+msgid "Chaos 1"
+msgstr ""
+
+msgid "Chaos 2"
+msgstr ""
+
+msgid "Shadow Form"
+msgstr ""
+
+msgid "Subversion"
+msgstr ""
+
+msgid "Mutation"
+msgstr ""
+
+msgid "Raise Dead"
+msgstr ""
+
+msgid "Turmoil"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "Dispels an illusory creature"
+msgstr ""
+
+msgid "The wizard tries to think of a new spell but misses a movement turn"
+msgstr ""
+
+msgid "Spreads and suffocates but may be harmed"
+msgstr ""
+
+msgid "Unstoppable fire that spreads and burns"
+msgstr ""
+
+msgid "Up to 8 trees are created with new spells hidden in their branches"
+msgstr ""
+
+msgid "Creates up to 8 dark sentries with razor sharp boughs"
+msgstr ""
+
+msgid "A wizard can hide in this fortress and be protected from harm"
+msgstr ""
+
+msgid "Up to 4 brick walls that block spells and ranged attacks"
+msgstr ""
+
+msgid "Weak long range magical attack"
+msgstr ""
+
+msgid "A blinded creature moves slowly and loses attack power"
+msgstr ""
+
+msgid "Strong magical attack with a short range"
+msgstr ""
+
+msgid "A sleeping creature cannot move or defend itself"
+msgstr ""
+
+msgid "1 chance to destroy a creature or all of a wizard's creatures"
+msgstr ""
+
+msgid "3 chances to destroy a creature or all of a wizard's creatures"
+msgstr ""
+
+msgid "Increases a wizard's defence"
+msgstr ""
+
+msgid "Greatly increases a wizard's defence"
+msgstr ""
+
+msgid "Greatly increases a wizard's combat"
+msgstr ""
+
+msgid "Increases a wizard's combat"
+msgstr ""
+
+msgid "Grants ranged combat for wizards"
+msgstr ""
+
+msgid "Allows a wizard to fly"
+msgstr ""
+
+msgid "Alters the balance of the universe"
+msgstr ""
+
+msgid "Greatly alters the balance of the universe"
+msgstr ""
+
+msgid "Wizard becomes fleet of foot until they engage in combat"
+msgstr ""
+
+msgid "Take control of an enemy creature"
+msgstr ""
+
+msgid "Changes a creature into a random new form"
+msgstr ""
+
+msgid "Reanimate a dead creature"
+msgstr ""
+
+msgid "Randomly move all creatures and objects to new locations"
+msgstr ""

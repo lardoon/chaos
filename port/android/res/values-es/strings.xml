@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="title_settings">Ajustes Avanzados</string>
+  <string name="pixels_enabled">Modo de Pixeles</string>
+  <string name="pixels_enabled_summary">Un estilo más tradicional con pixeles bien definidos</string>
+  <string name="pixels_disabled_summary">Bordes suaves con los gráficos interpolados entre pixeles</string>
+  <string name="input_settings">Ajustes de Mandos</string>
+  <string name="press_key_prompt">Pulsa un botón</string>
+  <string name="key_clear">Cancelar</string>
+  <string name="key_a">Aceptar</string>
+  <string name="key_b">Atrás</string>
+  <string name="key_select">Seleccionar Siguiente</string>
+  <string name="key_start">Empezar</string>
+  <string name="key_r">Examinar</string>
+  <string name="key_l">Resaltar</string>
+</resources>

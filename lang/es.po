@@ -1,0 +1,574 @@
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-02 12:13+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "(DEAD)"
+msgstr "(MUERTO)"
+
+msgid "ASLEEP"
+msgstr "DORMIDO"
+
+msgid "BLIND"
+msgstr "CIEGO"
+
+msgid "OUT OF RANGE"
+msgstr "NO ALCANZA"
+
+msgid "NO LINE OF SIGHT"
+msgstr "NO SE VE"
+
+msgid "SPELL FAILS"
+msgstr "EL HECHIZO FALLA"
+
+msgid "SPELL SUCCEEDS"
+msgstr "HECHIZO EXITOSO"
+
+msgid "OK"
+msgstr "TERMINADO"
+
+msgid "COMBAT="
+msgstr "COMBATE="
+
+msgid "RANGED COMBAT="
+msgstr "COMBATE A DISTANCIA="
+
+msgid "RANGE="
+msgstr "RANGO="
+
+msgid "DEFENCE="
+msgstr "DEFENSA="
+
+msgid "MOVEMENT ALLOWANCE="
+msgstr "RANGO DE MOVIMIENTO="
+
+msgid "MANOEUVRE RATING="
+msgstr "ÍNDICE DE MANIOBRA="
+
+msgid "MAGIC RESISTANCE="
+msgstr "RESISTENCIA A MAGIA="
+
+msgid "CASTING CHANCE="
+msgstr "POSIBILIDAD DE ÉXITO="
+
+msgid "SPELLS="
+msgstr "HECHIZOS="
+
+msgid "ABILITY="
+msgstr "HABILIDAD="
+
+msgid "KNIFE"
+msgstr "FILO"
+
+msgid "SWORD"
+msgstr "ESPADA"
+
+msgid "ARMOUR"
+msgstr "ARMADURA"
+
+msgid "SHIELD"
+msgstr "ESCUDO"
+
+msgid "FLYING"
+msgstr "VUELA"
+
+msgid "SHADOW"
+msgstr "SOMBRA"
+
+msgid "(CHAOS "
+msgstr "(CAOS "
+
+msgid "(LAW "
+msgstr "(LEY "
+
+msgid "MOUNT"
+msgstr "MONTURA"
+
+msgid "UNDEAD"
+msgstr "MUERTO VIVIENTE"
+
+msgid "EXAMINE SPELL"
+msgstr "EXAMINAR HECHIZO"
+
+msgid "SELECT SPELL"
+msgstr "ELEGIR HECHIZO"
+
+msgid "EXAMINE BOARD"
+msgstr "EXAMINAR TABLA"
+
+msgid "CONTINUE WITH GAME"
+msgstr "SEGUIR CON EL JUEGO"
+
+msgid "QUIT GAME"
+msgstr "SALIR DEL JUEGO"
+
+msgid "REALLY QUIT? "
+msgstr "¿SALIR DE VERDAD? "
+
+msgid "ENGAGED TO ENEMY"
+msgstr "EN CONFLICTO"
+
+msgid "DISMOUNT WIZARD? "
+msgstr "¿DESMONTA?"
+
+msgid "MOVEMENT RANGE="
+msgstr "RANGO="
+
+msgid "(FLYING)"
+msgstr "(VOLANDO)"
+
+msgid "RANGED COMBAT,RANGE="
+msgstr "RANGO, TIRANDO="
+
+msgid "CONTINUE THE BATTLE?"
+msgstr "¿SEGUIR CON LA BATALLA?"
+
+msgid "YES"
+msgstr "SÍ"
+
+msgid "NO"
+msgstr "NO"
+
+msgid "PRESS "
+msgstr "PULSA "
+
+msgid "THE CONTEST IS DRAWN BETWEEN"
+msgstr "HAY EMPATE"
+
+msgid "'S TURN"
+msgstr ", TE TOCA"
+
+msgid " MEDITATES"
+msgstr " MEDITA"
+
+msgid "MOVEMENT POINTS LEFT="
+msgstr "QUEDAN PARA MOVER="
+
+msgid "UNDEAD-CANNOT BE ATTACKED"
+msgstr "NO SE PUEDE ATACAR-NOMUERTO"
+
+msgid "'S CREATIONS"
+msgstr " Y SU CREACIONES"
+
+msgid "PRESS START TO END TURN"
+msgstr "PULSA START PARA TERMINAR"
+
+msgid "THE WINNER IS:"
+msgstr "HA GANADO:"
+
+msgid "END"
+msgstr "FIN"
+
+msgid "Round Limit"
+msgstr "Max. Rondas"
+
+msgid "Old Bugs"
+msgstr "Trampas "
+
+msgid "New Features"
+msgstr "Cosas Nuevas"
+
+msgid "Sound On "
+msgstr "Sonido"
+
+msgid "Sound Test"
+msgstr "Prueba Sonido"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "ON "
+msgstr "SI "
+
+msgid "OFF"
+msgstr "NO "
+
+msgid "DEFAULT"
+msgstr "POR DEFECTO"
+
+msgid "OFF  "
+msgstr "INFINITAS"
+
+msgid "GAME OPTIONS"
+msgstr "OPCIONES DEL JUEGO"
+
+msgid "BACK"
+msgstr "ATRÁS"
+
+msgid "MORE OPTIONS"
+msgstr "MÁS OPCIONES"
+
+msgid "Computer "
+msgstr "Ordenador "
+
+msgid "Human     "
+msgstr "Humano     "
+
+msgid "How many players?"
+msgstr "¿Cuantos juegan?"
+
+msgid "NEW SPELL FOR "
+msgstr "NUEVO HECHIZO PARA "
+
+msgid "DONE"
+msgstr "HECHO"
+
+msgid "ILLUSION? "
+msgstr "¿ILUSIÓN? "
+
+msgid "Spells cast as illusions never fail but can be disbelieved"
+msgstr "Hechizos creados como ilusiones nunca fallan pero desaparecen si alguien desconfias"
+
+msgid " HERE OR "
+msgstr " AQUÍ O "
+
+msgid " TO GO BACK"
+msgstr " PARA VOLVER"
+
+msgid "'S SPELLS"
+msgstr " HECHIZOS"
+
+msgid "CHAOS -THE BATTLE OF WIZARDS"
+msgstr "CAOS -BATALLA DE LOS BRUJOS"
+
+msgid "By Julian Gollop"
+msgstr "Por Julian Gollop"
+
+msgid " version"
+msgstr ""
+
+msgid "by Quirky"
+msgstr "por Quirky"
+
+msgid "DEBUG BUILD"
+msgstr ""
+
+msgid "Tap to Start"
+msgstr "Toca para empezar"
+
+msgid "Press "
+msgstr "Pulsa "
+
+msgid "START"
+msgstr "EMPIEZA"
+
+msgid "OPTIONS"
+msgstr "OPCIONES"
+
+msgid "CONTINUE"
+msgstr "CONTINUA"
+
+msgid "S"
+msgstr ""
+
+msgid "MENU"
+msgstr "MENÚ"
+
+msgid "RIGHT"
+msgstr "DERECHA"
+
+msgid "LEFT"
+msgstr "IZQUIERDA"
+
+msgid "UP"
+msgstr "ARRIBA"
+
+msgid "DOWN"
+msgstr "ABAJO"
+
+msgid "SEARCH"
+msgstr "BUSCAR"
+
+msgid "L"
+msgstr ""
+
+msgid "TOUCH"
+msgstr "TOCA"
+
+msgid "spellName"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Disbelieve"
+msgstr "Desconfiar"
+
+msgid "Meditate"
+msgstr "Meditar"
+
+msgid "King Cobra"
+msgstr "Cobra"
+
+msgid "Dire Wolf"
+msgstr "Lobo Feroz"
+
+msgid "Goblin"
+msgstr "Duende"
+
+msgid "Crocodile"
+msgstr "Cocodrilo"
+
+msgid "Troll"
+msgstr "Trol"
+
+msgid "Faun"
+msgstr "Fauno"
+
+msgid "Lion"
+msgstr "León"
+
+msgid "Elf"
+msgstr "Elfo"
+
+msgid "Orc"
+msgstr "Orco"
+
+msgid "Bear"
+msgstr "Oso"
+
+msgid "Gorilla"
+msgstr "Gorila"
+
+msgid "Ogre"
+msgstr "Ogro"
+
+msgid "Hydra"
+msgstr "Hidra"
+
+msgid "Giant Rat"
+msgstr "Rata Gigante"
+
+msgid "Giant"
+msgstr "Gigante"
+
+msgid "Horse"
+msgstr "Caballo"
+
+msgid "Unicorn"
+msgstr "Unicornio"
+
+msgid "Centaur"
+msgstr "Centauro"
+
+msgid "Pegasus"
+msgstr "Pegaso"
+
+msgid "Gryphon"
+msgstr "Grifo"
+
+msgid "Manticore"
+msgstr "Mantícora"
+
+msgid "Bat"
+msgstr "Murciélago"
+
+msgid "Green Dragon"
+msgstr "Dragón Verde"
+
+msgid "Red Dragon"
+msgstr "Dragón Rojo"
+
+msgid "Golden Dragon"
+msgstr "Dragón Dorado"
+
+msgid "Harpy"
+msgstr "Harpía"
+
+msgid "Eagle"
+msgstr "Águila"
+
+msgid "Vampire"
+msgstr "Vampiro"
+
+msgid "Ghost"
+msgstr "Fantasma"
+
+msgid "Spectre"
+msgstr "Espectro"
+
+msgid "Wraith"
+msgstr "Aparición"
+
+msgid "Skeleton"
+msgstr "Esqueleto"
+
+msgid "Zombie"
+msgstr "Zombi"
+
+msgid "Gooey Blob"
+msgstr "Masa Viscosa"
+
+msgid "Magic Fire"
+msgstr "Fuego Mágico"
+
+msgid "Magic Wood"
+msgstr "Bosque Mágico"
+
+msgid "Shadow Wood"
+msgstr "Bosque Sombrío"
+
+msgid "Magic Castle"
+msgstr "Castillo"
+
+msgid "Dark Citadel"
+msgstr "Ciudadela"
+
+msgid "Wall"
+msgstr "Pared"
+
+msgid "Magic Bolt"
+msgstr "Rayo Mágico"
+
+msgid "Blind"
+msgstr "Cegar"
+
+msgid "Lightning"
+msgstr "Rayo Largo"
+
+msgid "Magic Sleep"
+msgstr "Sueño Mágico"
+
+msgid "Vengeance"
+msgstr "Venganza"
+
+msgid "Justice"
+msgstr "Justicia"
+
+msgid "Dark Power"
+msgstr "Poder Oscuro"
+
+msgid "Decree"
+msgstr "Decreto"
+
+msgid "Magic Shield"
+msgstr "Escudo Mágico"
+
+msgid "Magic Armour"
+msgstr "Armadura"
+
+msgid "Magic Sword"
+msgstr "Espada Mágico"
+
+msgid "Magic Knife"
+msgstr "Filo Mágico"
+
+msgid "Magic Bow"
+msgstr "Arco Mágico"
+
+msgid "Magic Wings"
+msgstr "Alas Mágicas"
+
+msgid "Law 1"
+msgstr "Ley 1"
+
+msgid "Law 2"
+msgstr "Ley 2"
+
+msgid "Chaos 1"
+msgstr "Caos 1"
+
+msgid "Chaos 2"
+msgstr "Caos 2"
+
+msgid "Shadow Form"
+msgstr "Sombra Forma"
+
+msgid "Subversion"
+msgstr "Subversión"
+
+msgid "Mutation"
+msgstr "Mutación"
+
+msgid "Raise Dead"
+msgstr "Reanimación"
+
+msgid "Turmoil"
+msgstr "Tormenta"
+
+msgid "description"
+msgstr ""
+
+msgid "Dispels an illusory creature"
+msgstr "Deshace una criatura falsa"
+
+msgid "The wizard tries to think of a new spell but misses a movement turn"
+msgstr "El brujo intenta crear un nuevo hechizo pero tiene que quedarse quieto"
+
+msgid "Spreads and suffocates but may be harmed"
+msgstr "Se extiende y sofoca pero se puede dañar"
+
+msgid "Unstoppable fire that spreads and burns"
+msgstr "Un fuego imparable que se extiende quemando todo"
+
+msgid "Up to 8 trees are created with new spells hidden in their branches"
+msgstr "Entre las ramas de los hasta 8 arboles se esconden nuevos hechizos"
+
+msgid "Creates up to 8 dark sentries with razor sharp boughs"
+msgstr "Crea hasta 8 centinelas oscuras con ramas afiladas"
+
+msgid "A wizard can hide in this fortress and be protected from harm"
+msgstr "Dentro de esta fortaleza, un brujo puede esconderse a salvo"
+
+msgid "Up to 4 brick walls that block spells and ranged attacks"
+msgstr "Hasta 4 paredes de ladrillo paran hechizos y ataques de lejos"
+
+msgid "Weak long range magical attack"
+msgstr "Ataque mágico flojo pero de larga distancia"
+
+msgid "A blinded creature moves slowly and loses attack power"
+msgstr "Una criatura cegado mueve más despacio y pierde su poder de combate"
+
+msgid "Strong magical attack with a short range"
+msgstr "Ataque mágico fuerte pero de corta distancia"
+
+msgid "A sleeping creature cannot move or defend itself"
+msgstr "Una criatura durmiendo no puede moverse ni defenderse"
+
+msgid "1 chance to destroy a creature or all of a wizard's creatures"
+msgstr "Una oportunidad para destruir las creaciones de un oponente"
+
+msgid "3 chances to destroy a creature or all of a wizard's creatures"
+msgstr "3 oportunidades para destruir las creaciones de un oponente"
+
+msgid "Increases a wizard's defence"
+msgstr "Aumenta la defensa de un brujo"
+
+msgid "Greatly increases a wizard's defence"
+msgstr "Aumenta mucho la defensa de un brujo"
+
+msgid "Greatly increases a wizard's combat"
+msgstr "Aumenta mucho el combate de un brujo"
+
+msgid "Increases a wizard's combat"
+msgstr "Aumenta el combate de un brujo"
+
+msgid "Grants ranged combat for wizards"
+msgstr "Aumenta el combate de un brujo"
+
+msgid "Allows a wizard to fly"
+msgstr "Permite que un brujo pueda volar"
+
+msgid "Alters the balance of the universe"
+msgstr "Altera el equilibrio del universo"
+
+msgid "Greatly alters the balance of the universe"
+msgstr "Altera mucho el equilibrio del universo"
+
+msgid "Wizard becomes fleet of foot until they engage in combat"
+msgstr "El brujo vuelve veloz, hasta que entra en combate"
+
+msgid "Take control of an enemy creature"
+msgstr "Toma el control de una criatura enemiga"
+
+msgid "Changes a creature into a random new form"
+msgstr "Cambia la victima a una nueva forma al azar"
+
+msgid "Reanimate a dead creature"
+msgstr "Resucita una criatura muerta"
+
+msgid "Randomly move all creatures and objects to new locations"
+msgstr "Mueve a nuevos sitios al azar todos los brujos, criaturas y otros objetos"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chaos Battle Of Wizards</string>
+    <string name="title_settings">Advanced Settings</string>
+    <string name="pixels_enabled">Clear Pixel Mode</string>
+    <string name="pixels_enabled_summary">Use a more traditional blocky pixel style when scaled up</string>
+    <string name="pixels_disabled_summary">Interpolate between the scaled up pixels, giving a smoother look</string>
+    <string name="input_settings">Gamepad Settings</string>
+    <string name="press_key_prompt">Press a button&#8230;</string>
+    <string name="key_clear">Clear</string>
+
+    <string name="key_a">Accept</string>
+    <string name="key_b">Back</string>
+    <string name="key_select">Select Next</string>
+    <string name="key_start">Start</string>
+    <string translatable="false" name="key_right">→</string>
+    <string translatable="false" name="key_left">←</string>
+    <string translatable="false" name="key_up">↑</string>
+    <string translatable="false" name="key_down">↓</string>
+    <string name="key_r">Examine</string>
+    <string name="key_l">Highlight</string>
+</resources>

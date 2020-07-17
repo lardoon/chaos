@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="chaos.app"
+    android:installLocation="auto"
+    android:versionCode="31"
+    android:versionName="1.31" >
+    <!-- this is required to write gmon.out -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-sdk
+        android:targetSdkVersion="22"
+        android:minSdkVersion="4" />
+    <uses-feature android:name="android.hardware.screen.landscape"/>
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:allowBackup="true"
+        android:backupAgent="chaos.app.FileHelperBackupAgent">
+        <activity
+            android:name=".ChaosActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SetPreferencesActivity"
+            android:label="@string/title_settings" >
+        </activity>
+
+        <uses-library required="false" name="com.sec.android.app.multiwindow"> </uses-library>
+        <meta-data android:name="com.sec.android.support.multiwindow" android:value="true" />
+
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:resource="@dimen/app_defaultsize_w" />
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:resource="@dimen/app_defaultsize_h" />
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:resource="@dimen/app_minimumsize_w" />
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:resource="@dimen/app_minimumsize_h" />
+    </application>
+</manifest>

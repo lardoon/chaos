@@ -1,0 +1,14 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="pixels_enabled"
+        android:title="@string/pixels_enabled"
+        android:summaryOn="@string/pixels_enabled_summary"
+        android:summaryOff="@string/pixels_disabled_summary"
+        />
+    <PreferenceCategory
+        android:key="input_settings"
+        android:title="@string/input_settings" />
+
+</PreferenceScreen>

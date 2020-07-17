@@ -1,0 +1,37 @@
+To add a new port:
+
+1. Try running cmake as is, setting the compiler CC and grit/bin2s flags.
+
+   The "grit" tool will be required for all ports to convert image data to the
+   correct format.
+
+   This should compile the core library for your platform.
+
+2. Create files port/your_platform/*.c that at least implement the functions
+   described in chaos/porting.h (see port/dummy/*.c for the minimum)
+
+3. Update the top-level CMakeLists.txt file to add the new platform.
+
+4. Add the file port/your_platform/CMakeLists.txt with any platform-specific
+   build steps.
+
+To translate:
+
+To update translations use tools/updatetranslate.sh, which does this:
+
+1) xgettext -k_ -kT chaos/*c
+  => this generates messages.po
+2)
+ a) cut -d',' -f1 data/spelldata.csv | tr '\n' ',' | xgettext -Lc -a -ospellnames.po -
+  => spellnames.po contains spell names
+ b) cut -d',' -f16 data/spelldata.csv | tr '\n' ',' | xgettext -Lc -a -odesc.po -
+  => desc.po has descriptions
+ c)  cat messages.po spellnames.po desc.po > chaos.pot
+3) vi -d chaos.pot lang/chaos.pot # check for suspect diffs, remove header crud
+4) msgmerge lang/es.po lang/chaos.pot  > es.po
+
+or use lang/genpot.sh script from the root of the project to create chaos.pot, ready for updating
+
+Compiling will create the .c files from the lang/*.po files and include that in
+the generated binary. It is not ideal, but doesn't require gettext (not
+available everywhere).

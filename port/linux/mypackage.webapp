@@ -1,0 +1,6 @@
+{
+  "name": "Chaos",
+  "developer": { "name": "Richard Quirk", "url": "http://rrqq.org" },
+  "package_path" : "http://somewhere.com/awesome.zip",
+  "version": "1"
+}
