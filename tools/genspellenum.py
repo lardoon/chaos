@@ -106,6 +106,6 @@ def main(args):
 
 if __name__ == '__main__':
     if len(sys.argv) < 4:
-        print "Usage: genspellenum infile.csv outenum.h outdata.c"
+        print("Usage: genspellenum infile.csv outenum.h outdata.c")
         sys.exit(1)
     main(sys.argv[1:])

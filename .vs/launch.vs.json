@@ -1,0 +1,20 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "cppgdb",
+      "name": "chaos (port\\linux\\chaos)",
+      "project": "CMakeLists.txt",
+      "projectTarget": "chaos (port\\linux\\chaos)",
+      "comment": "Learn how to configure remote debugging. For more info, see http://aka.ms/vslinuxdebug",
+      "debuggerConfiguration": "gdb",
+      "MIMode": "gdb",
+      "args": [
+        "-n",
+        "-lgame1.txt"
+      ],
+      "env": {}
+    }
+  ]
+}

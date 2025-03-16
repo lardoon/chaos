@@ -6,3 +6,14 @@ cscope.po.out
 bin/
 build-eclipse
 .settings/
+/.vs/chaos/FileContentIndex
+/out/build
+/.vs/chaos/v17
+/.vs/chaos/config
+/.vs/Linux-GCC-Debug
+/.vs/CMake Overview
+/.vs/cmake.db
+/.vs/CMakeWorkspaceSettings.json
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite-journal

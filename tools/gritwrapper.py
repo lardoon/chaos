@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
         dirname = sys.argv[1]
         if not os.path.exists(dirname):
-            print "Create dir" , dirname
+            print("Create dir" , dirname)
             os.mkdir(dirname)
 
         os.chdir(dirname)
@@ -32,13 +32,13 @@ if __name__ == '__main__':
         try:
             proc = subprocess.Popen(args)
             proc.wait()
-        except OSError, e:
+        except(OSError, e):
             sys.stderr.write(str(e) + ' running:\n')
             sys.stderr.write(str(' '.join(args)) + '\n')
             sys.exit(1)
-    except Exception, e:
+    except(Exception, e):
         sys.stderr.write(str(e) + '\n')
         sys.exit(1)
-    except KeyboardInterrupt, e:
+    except(KeyboardInterrupt, e):
         sys.stderr.write('Interrupted\n')
         sys.exit(1)
