@@ -4,6 +4,9 @@ save files: use LF, not CRLF
 install: ninja-build ffmpeg
 python scripts: update to v3 by adding parentheses to print and except
 add devkitpro path to gfx/CMakeLists.txt if necessary
+from devkitpro install gba-dev, choose grit only
+https://devkitpro.org/wiki/Getting_Started
+https://devkitpro.org/wiki/devkitPro_pacman
 
 I have only tested the compilation thoroughly on Linux.
 
