@@ -4,7 +4,7 @@
 #    run grit on the pcx files there
 
 set(PAL_FLAGS -mRT -gB4)
-find_program(GRIT grit /usr/bin $ENV{DEVKITARM}/bin)
+find_program(GRIT grit /usr/bin $ENV{DEVKITARM}/bin /opt/devkitpro/tools/bin)
 if(NOT GRIT)
     message(FATAL_ERROR "unable to find grit")
 endif()

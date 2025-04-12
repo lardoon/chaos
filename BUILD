@@ -1,3 +1,10 @@
+emscripten: need version 1.40.1 but first install and activate latest, then activate 1.40.1
+poc2c.sh: install xxd and change file to use LF, not CRLF
+save files: use LF, not CRLF
+install: ninja-build ffmpeg
+python scripts: update to v3 by adding parentheses to print and except
+add devkitpro path to gfx/CMakeLists.txt if necessary
+
 I have only tested the compilation thoroughly on Linux.
 
 To compile you will need at least the following:

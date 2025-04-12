@@ -41,10 +41,10 @@ def main():
         if filename.endswith('.h'):
             header.append(filename)
     if len(header) > 1:
-        print "Only one header is needed"
+        print ("Only one header is needed")
         sys.exit(1)
     if len(impl) > 1:
-        print "Only one implementation .c file is needed"
+        print ("Only one implementation .c file is needed")
         sys.exit(1)
 
     wavs.sort()

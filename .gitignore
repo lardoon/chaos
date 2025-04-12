@@ -6,3 +6,6 @@ cscope.po.out
 bin/
 build-eclipse
 .settings/
+
+.vs/
+out/
