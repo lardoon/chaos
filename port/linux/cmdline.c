@@ -137,6 +137,9 @@ int parse_opts(int argc, char *argv[])
 				break;
 		}
 	}
+#ifdef _HEADLESS
+	isFullScreen = HEADLESS;
+#endif
 	if (usage) {
 		print_usage();
 		return 1;

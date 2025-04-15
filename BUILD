@@ -1,7 +1,7 @@
 emscripten: need version 1.40.1 but first install and activate latest, then activate 1.40.1
 poc2c.sh: install xxd and change file to use LF, not CRLF
 save files: use LF, not CRLF
-install: ninja-build ffmpeg
+install: ninja-build ffmpeg imagemagick
 python scripts: update to v3 by adding parentheses to print and except
 add devkitpro path to gfx/CMakeLists.txt if necessary
 from devkitpro install gba-dev, choose grit only

@@ -48,6 +48,8 @@ void platform_more_options(void) { }
 
 void platform_wait(void)
 {
+#ifndef _HEADLESS
 	emscripten_sleep(20);
+#endif
 	sdl_update_screen();
 }

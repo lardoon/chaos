@@ -37,6 +37,10 @@ static unsigned char tmp_range_attack_val;
 static unsigned char tmp_wizard_movement_allowance;
 static unsigned char attacker;
 
+#ifdef _HEADLESS
+extern int game_running;
+#endif
+
 /* based on be52 - get the owner of creature at x,y */
 static void get_owner_at(uint8_t x, uint8_t y, uint8_t * surround_creature)
 {
@@ -497,11 +501,15 @@ static void do_quit(void)
 
 void quit_game(void)
 {
+#ifdef _HEADLESS
+	game_running = 0;
+#else
 	fade_down();
 	do_quit();
 	show_splash();
 	move_screen_to(0);
 	fade_up();
+#endif
 }
 
 static void end_game(void)
@@ -697,6 +705,7 @@ void start_movement_round(void)
 	delay(64);
 	if (g_chaos_state.current_player == 9) {
 
+#if !defined(_REPLAY) && !defined(_HEADLESS)
 		/* there is no human player! */
 		end_game_option();
 		if (g_chaos_state.current_player == 9) {
@@ -705,6 +714,9 @@ void start_movement_round(void)
 		} else {
 			continue_game();
 		}
+#else
+		continue_game();
+#endif
 	} else {
 
 		fade_down();

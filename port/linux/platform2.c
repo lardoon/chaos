@@ -4,6 +4,9 @@
 #include "chaos/chaos.h"
 
 extern char *g_load_file;
+#ifdef _HEADLESS
+extern int game_running;
+#endif
 
 const char *platform_name(void)
 {
@@ -25,7 +28,11 @@ void emscripten_set_main_loop(void (*func)(), int fps, int simulate_infinite_loo
 		rate = 1000 / fps;
 	}
 	int doload = g_load_file != NULL;
+#ifdef _HEADLESS
+	while(game_running) {
+#else
 	while (1) {
+#endif
 		Uint32 ticksbefore = SDL_GetTicks();
 		func();
 		/* ensure that if -l option is given, it loads right away */

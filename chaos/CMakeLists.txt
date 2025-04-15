@@ -63,6 +63,121 @@ add_library(chaos_core
     wizards.h
     ${GENSFX_TARGETS}
     ${GENSPELL_TARGETS})
+
+add_library(chaos_core_headless
+    arena.c
+    arena.h
+    casting.c
+    casting.h
+    chaos.c
+    chaos.h
+    computer.c
+    computer.h
+    creature.c
+    creature.h
+    cursor_defines.h
+    editname.c
+    editname.h
+    examine.c
+    examine.h
+    gamemenu.c
+    gamemenu.h
+    gfx.c
+    gfx.h
+    images.h
+    input.c
+    input.h
+    magic.c
+    magic.h
+    main.c
+    movement.c
+    movement.h
+    options.c
+    options.h
+    palettes.h
+    pathfinder.c
+    pathfinder.h
+    platform.h
+    players.c
+    players.h
+    porting.h
+    rand.c
+    rand.h
+    spelldata.h
+    spellselect.c
+    spellselect.h
+    splash.c
+    splash.h
+    translate.c
+    translate.h
+    text16.c
+    text16.h
+    touch.c
+    touch.h
+    wizard_data.h
+    wizards.c
+    wizards.h
+    ${GENSFX_TARGETS}
+    ${GENSPELL_TARGETS})
+target_compile_definitions(chaos_core_headless PRIVATE _HEADLESS)
+if(EMSCRIPTEN)
+add_library(chaos_core_replay
+    arena.c
+    arena.h
+    casting.c
+    casting.h
+    chaos.c
+    chaos.h
+    computer.c
+    computer.h
+    creature.c
+    creature.h
+    cursor_defines.h
+    editname.c
+    editname.h
+    examine.c
+    examine.h
+    gamemenu.c
+    gamemenu.h
+    gfx.c
+    gfx.h
+    images.h
+    input.c
+    input.h
+    magic.c
+    magic.h
+    main.c
+    movement.c
+    movement.h
+    options.c
+    options.h
+    palettes.h
+    pathfinder.c
+    pathfinder.h
+    platform.h
+    players.c
+    players.h
+    porting.h
+    rand.c
+    rand.h
+    spelldata.h
+    spellselect.c
+    spellselect.h
+    splash.c
+    splash.h
+    translate.c
+    translate.h
+    text16.c
+    text16.h
+    touch.c
+    touch.h
+    wizard_data.h
+    wizards.c
+    wizards.h
+    ${GENSFX_TARGETS}
+    ${GENSPELL_TARGETS})
+target_compile_definitions(chaos_core_replay PRIVATE _REPLAY)
+endif()
 endif()
 
 set(GENSPELL ${CMAKE_SOURCE_DIR}/tools/genspellenum.py)

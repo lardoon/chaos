@@ -73,6 +73,9 @@ void chaos_one_frame(void)
 /* 60 waits 1 second. */
 void delay(int d)
 {
+#ifdef _HEADLESS
+	d = 0;
+#endif
 #ifdef HAS_STRESS_TEST
 	int running_in_stress_mode(void);
 	if (running_in_stress_mode())

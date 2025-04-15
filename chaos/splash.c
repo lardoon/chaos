@@ -155,13 +155,16 @@ void splash_start(void)
 			ypos = 15;
 			print_text16("                    ", 2, ypos + 2, 12);
 		}
+
 		const char *txt = _("START");
 
 		int x = (width - (strlen(txt) + 4 + strlen(_("OPTIONS")))) / 2;
 		print_text16("                    ", 2, ypos, 12);
+#if !defined(_REPLAY)
 		print_text16(txt, x, ypos, 12);
 		splash_options_x = x + strlen(txt) + 4;
 		print_text16(_("OPTIONS"), splash_options_x, ypos, 13);
+#endif
 
 		if (has_save) {
 			txt = _("CONTINUE");

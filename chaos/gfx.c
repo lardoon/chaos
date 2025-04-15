@@ -794,21 +794,26 @@ int get_main_color(int creatid, int frame)
 
 void fade_up(void)
 {
+#if !defined(_REPLAY)
+
 	int i;
 	for (i = 16; i >= 0; i-=2) {
 		platform_set_fade_level(i);
 		platform_wait();
 	}
+#endif
 	fadedup = 1;
 }
 
 void fade_down(void)
 {
+#if !defined(_REPLAY)
 	int i;
 	for (i = 0; i <= 16; i+=2) {
 		platform_set_fade_level(i);
 		platform_wait();
 	}
+#endif
 	fadedup = 0;
 }
 

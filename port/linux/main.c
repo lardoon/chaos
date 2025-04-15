@@ -13,6 +13,10 @@ extern SDL_mutex *g_vsync_mutex;
 extern int g_stress_mode;
 int g_debug_mode;
 
+#ifdef _HEADLESS
+int game_running = 1;
+#endif
+
 #ifdef EMSCRIPTEN
 #include <stdio.h>
 Uint32 s_last_time = 0;

@@ -2,8 +2,8 @@
 mergeInto(LibraryManager.library, {
     js_save: function(key_, data_) {
         try {
-            var key = Pointer_stringify(key_);
-            var data = Pointer_stringify(data_);
+            var key = UTF8ToString(key_);
+            var data = UTF8ToString(data_);
             window.localStorage.setItem(key, data);
         } catch (e) {
             console.log('error in js_save:' + e);
@@ -11,7 +11,7 @@ mergeInto(LibraryManager.library, {
     },
     js_load: function(key_) {
         try {
-            var key = Pointer_stringify(key_);
+            var key = UTF8ToString(key_);
             var result_ = window.localStorage.getItem(key);
             if (result_ === null)
                 return 0;
@@ -25,7 +25,7 @@ mergeInto(LibraryManager.library, {
     },
     js_has_saved_game: function(key_) {
         try {
-            var key = Pointer_stringify(key_);
+            var key = UTF8ToString(key_);
             var result_ = window.localStorage.getItem(key);
             if (result_ === undefined || result_ === null)
                 return 0;
