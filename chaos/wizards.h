@@ -50,6 +50,7 @@ typedef struct  {
 	unsigned char selected_spell;
 	unsigned char last_spell;
 	unsigned char timid;
+	// unsigned char team;
 } player_data;		/* 60 bytes * 8 = 480 bytes of wizard data */
 extern player_data *players;
 

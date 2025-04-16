@@ -213,9 +213,9 @@ void parse_options(char *optstr)
 void set_default_options(void)
 {
 	Options[OPT_ROUND_LIMIT] = DEFAULT_ROUNDS;
-	Options[OPT_OLD_BUGS] = 1;	/* on */
+	Options[OPT_OLD_BUGS] = 0;	/* on */
 	Options[OPT_SOUND_ENABLED] = 1;	/* on */
-	Options[OPT_NEW_FEATURES] = 1;	/* on */
+	Options[OPT_NEW_FEATURES] = 0;	/* on */
 	Options[OPT_CHEAT] = 0;	/* no cheat */
 	Options[OPT_LANGUAGE] = 0;	/* default */
 	if (s_load_options) {

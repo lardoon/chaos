@@ -145,7 +145,11 @@ void splash_start(void)
 {
 	if (splash_menu_on == 0) {
 		splash_menu_on = 1;
+#ifndef _REPLAY
 		hilite_item = 0;
+#else
+		hilite_item = 2;
+#endif
 		int width, height;
 		int has_save = really_has_save();
 		int ypos = 17;
@@ -228,6 +232,7 @@ void splash_a(void)
 		splash_start();
 		return;
 	}
+#ifndef _REPLAY
 	if (hilite_item == 1) {
 		fade_down();
 		show_options();
@@ -235,6 +240,9 @@ void splash_a(void)
 	} else {
 		create_or_load();
 	}
+#else
+	create_or_load();
+#endif
 }
 
 void splash_touch(int x, int y)
