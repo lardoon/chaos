@@ -709,6 +709,7 @@ static void append_player(const player_data *p, char *buffer)
 	append_stat(buffer, "SELECTED_SPELL", p->selected_spell);
 	append_stat(buffer, "LAST_SPELL", p->last_spell);
 	append_stat(buffer, "TIMID", p->timid);
+	append_stat(buffer, "TEAM", p->team);
 }
 
 void players_to_str(char *buffer)
@@ -743,6 +744,8 @@ static void parse_line(char *line, int player_idx)
 	*valend = 0;
 	*nameend = 0;
 	player_data *p = &players[player_idx];
+	// by default, player is on their own team
+	p->team = player_idx;
 	if (strcmp(namestart, "NAME") == 0) {
 		unsigned int i;
 		const char *nametemp = valstart + 1;
@@ -795,7 +798,12 @@ static void parse_line(char *line, int player_idx)
 	} else if (strcmp(namestart, "COLOUR") == 0) {
 		p->colour = strtol(valstart, 0, 0);
 	} else if (strcmp(namestart, "TYPE") == 0) {
+#ifdef _HEADLESS
+		// force headless run players to be CPU
+		p->plyr_type = 65;
+#else
 		p->plyr_type = strtol(valstart, 0, 0);
+#endif
 	} else if (strcmp(namestart, "FLAG") == 0) {
 		p->modifier_flag = strtol(valstart, 0, 0);
 	} else if (strcmp(namestart, "ILLUSION") == 0) {
@@ -806,6 +814,9 @@ static void parse_line(char *line, int player_idx)
 		p->last_spell = strtol(valstart, 0, 0);
 	} else if (strcmp(namestart, "TIMID") == 0) {
 		p->timid = strtol(valstart, 0, 0);
+	}
+	else if (strcmp(namestart, "TEAM") == 0) {
+		p->team = strtol(valstart, 0, 0);
 	}
 	*valend = tmpvalend;
 	*nameend = tmpnameend;

@@ -18,6 +18,8 @@
 #include "chaos/text16.h"
 #include "chaos/input.h"
 
+#include "chaos/output.h"
+
 void do_creature_spell_if_ok(intptr_t arg)
 {
 	int ti = (int)arg;
@@ -1135,6 +1137,7 @@ static void do_disbelieve_cast(void)
 	spell_animation();
 	temp_success_flag = 0;
 	end_disbelieve();
+
 }
 
 void cast_disbelieve(void)
@@ -1144,8 +1147,12 @@ void cast_disbelieve(void)
 
 	if (IS_CPU(g_chaos_state.current_player)) {
 		ai_cast_disbelieve();
-		if (target_square_found)
+		if (target_square_found) {
 			do_disbelieve_cast();
+#ifdef _HEADLESS
+			output_cast_disbelieve(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
+#endif
+		}
 
 	} else {
 		if (arena[0][target_index] == 0

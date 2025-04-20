@@ -6,16 +6,13 @@
 #include "chaos/rand.h"
 #include "port/linux/cmdline.h"
 #include "port/linux/screen.h"
+#include <stdio.h>
 
 extern void emscripten_set_main_loop(void (*func)(), int fps, int simulate_infinite_loop);
 extern SDL_cond *g_vsync_cond;
 extern SDL_mutex *g_vsync_mutex;
 extern int g_stress_mode;
 int g_debug_mode;
-
-#ifdef _HEADLESS
-int game_running = 1;
-#endif
 
 #ifdef EMSCRIPTEN
 #include <stdio.h>
@@ -47,6 +44,9 @@ int main(int argc, char *argv[])
 		/* some weird option that we don't support. */
 		return 122;
 	}
+#ifdef _HEADLESS
+	remove("output.json");
+#endif
 	if (g_stress_mode) {
 		struct timeval tv;
 		gettimeofday(&tv, NULL);

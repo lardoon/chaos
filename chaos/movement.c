@@ -37,10 +37,6 @@ static unsigned char tmp_range_attack_val;
 static unsigned char tmp_wizard_movement_allowance;
 static unsigned char attacker;
 
-#ifdef _HEADLESS
-extern int game_running;
-#endif
-
 /* based on be52 - get the owner of creature at x,y */
 static void get_owner_at(uint8_t x, uint8_t y, uint8_t * surround_creature)
 {
@@ -501,8 +497,9 @@ static void do_quit(void)
 
 void quit_game(void)
 {
+	
 #ifdef _HEADLESS
-	game_running = 0;
+	platform_exit();
 #else
 	fade_down();
 	do_quit();
@@ -520,9 +517,11 @@ static void end_game(void)
 	i = 0;
 	j = 4;
 	k = 8;
+#ifndef _HEADLESS
 	players[0].plyr_type = PLYR_HUMAN;
 	g_chaos_state.current_player = 0;	/* otherwise cpu player might just immediately "press" a key! */
 	wait_for_letgo();
+#endif // !1
 #ifdef HAS_STRESS_TEST
 	int running_in_stress_mode(void);
 	if (running_in_stress_mode()) {
@@ -532,7 +531,10 @@ static void end_game(void)
 #endif
 	/* remove save game */
 	save_game(0);
-
+#ifdef _HEADLESS
+	// don't wait for interaction
+	keypressed = 1;
+#endif
 	while (!keypressed) {
 		platform_wait();
 		platform_wait();
@@ -557,6 +559,7 @@ static void end_game(void)
 		if (platform_key_pressed(CHAOS_KEY_A) || platform_key_pressed(CHAOS_KEY_TOUCH))
 			keypressed = 1;
 	}
+
 	quit_game();
 }
 

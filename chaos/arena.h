@@ -37,6 +37,7 @@ extern unsigned char wizard_index;	/* index into arena of current player */
 extern unsigned char start_index;	/* index into arena for start square of current spell */
 extern unsigned char target_index;	/* index into arena for target square of current spell */
 int get_owner(int square);
+int get_spell(int square);
 int is_dead(int square);
 int is_asleep(int square);
 int is_blind(int square);
@@ -48,6 +49,8 @@ void countdown_anim(void);
 void animate_arena(void);
 void clear_message(void);
 void get_yx(uint16_t arena_index, uint8_t * H, uint8_t * L);
+void get_xy(uint16_t arena_index, uint8_t* L, uint8_t* H);
+
 void get_yx2(uint16_t arena_index, uint8_t * H, uint8_t * L);
 void get_yx_upper(unsigned char arena_index, unsigned char *H,
 		unsigned char *L);

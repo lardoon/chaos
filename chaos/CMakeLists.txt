@@ -117,6 +117,10 @@ add_library(chaos_core_headless
     wizard_data.h
     wizards.c
     wizards.h
+    jWrite.h
+    jWrite.c
+    output.h
+    output.c
     ${GENSFX_TARGETS}
     ${GENSPELL_TARGETS})
 target_compile_definitions(chaos_core_headless PRIVATE _HEADLESS)

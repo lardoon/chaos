@@ -476,6 +476,13 @@ void get_yx(uint16_t arena_index, uint8_t * H, uint8_t * L)
 	*L = 1 + (*L) / 2;
 }
 
+void get_xy(uint16_t arena_index, uint8_t* L, uint8_t* H)
+{
+	get_yx2(arena_index, H, L);
+	*H = 1 + (*H) / 2;
+	*L = 1 + (*L) / 2;
+}
+
 void get_yx2(uint16_t arena_index, uint8_t * H, uint8_t * L)
 {
 	int val1 = arena_index & 0xF0;
@@ -895,6 +902,10 @@ int is_blind(int square)
 int is_asleep(int square)
 {
   return blind_bit_set(square) && (arena[2][square] == 4);
+}
+
+int get_spell(int square) {
+	return arena[0][square];
 }
 
 int get_owner(int square)

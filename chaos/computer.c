@@ -1,5 +1,5 @@
 /* computer.c */
-
+#include <stdio.h>
 #include <stdlib.h>
 #include "chaos/platform.h"
 
@@ -15,6 +15,8 @@
 #include "chaos/chaos.h"
 #include "chaos/gfx.h"
 #include "chaos/pathfinder.h"
+#include "chaos/output.h"
+
 unsigned char target_square_found;
 unsigned char move_table_created;
 unsigned char has_wizard_moved;
@@ -855,6 +857,11 @@ void ai_cast_creature(void)
 				temp_illusion_flag = 1;
 		}
 		set_spell_success();
+		
+#ifdef _HEADLESS
+		output_cast_creature(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag, temp_illusion_flag);
+#endif
+
 		print_name_spell();
 		delay(20);
 		spell_animation();
@@ -1236,8 +1243,12 @@ void ai_cast_justice(void)
 	if (!temp_success_flag) {
 		temp_cast_amount = 0;
 		print_success_status();
+#ifdef _HEADLESS
+		void output_cast_fail(g_chaos_state.current_player, wizard_index, uint8_t spell);
+#endif
 		return;
 	}
+
 	uint8_t tmp_start = wizard_index;
 	uint8_t creature;
 	while (temp_cast_amount != 0) {
@@ -1256,6 +1267,7 @@ void ai_cast_justice(void)
 						&& creature != 0)) {
 				/* wizard or proper creature */
 				target_index = prio_table[LUT_index];
+
 				LUT_index++;
 				LUT_index++;
 				break;
