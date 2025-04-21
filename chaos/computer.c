@@ -15,7 +15,10 @@
 #include "chaos/chaos.h"
 #include "chaos/gfx.h"
 #include "chaos/pathfinder.h"
+
+#ifdef _HEADLESS
 #include "chaos/output.h"
+#endif
 
 unsigned char target_square_found;
 unsigned char move_table_created;
@@ -1174,6 +1177,9 @@ static void one_wall_cast(void)
 			break;
 		}
 		/* we have found a suitable square... */
+#ifdef _HEADLESS
+		output_cast_creature(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag, 0);
+#endif
 		do_wall_cast();
 		if (tmp_square_found == 0) {
 			print_success_status();
@@ -1214,6 +1220,12 @@ void ai_cast_wall(void)
 	/* got to here? OK, a "good" square was found for wall. */
 	/* calculate spell success and update world chaos ... */
 	set_spell_success();
+
+#ifdef _HEADLESS
+	if (temp_success_flag == 0) {
+		output_cast_fail(g_chaos_state.current_player, wizard_index, current_spell);
+	}
+#endif
 	print_name_spell();
 	delay(20);
 	int16_t in_range = create_range_table(prio_table[LUT_index], 0x9);
@@ -1243,11 +1255,16 @@ void ai_cast_justice(void)
 	if (!temp_success_flag) {
 		temp_cast_amount = 0;
 		print_success_status();
+
 #ifdef _HEADLESS
-		void output_cast_fail(g_chaos_state.current_player, wizard_index, uint8_t spell);
+		output_cast_fail(g_chaos_state.current_player, wizard_index, current_spell);
 #endif
 		return;
 	}
+
+#ifdef _HEADLESS
+	output_cast_success(g_chaos_state.current_player, wizard_index, current_spell);
+#endif
 
 	uint8_t tmp_start = wizard_index;
 	uint8_t creature;
@@ -1352,6 +1369,10 @@ void ai_cast_raisedead(void)
 		do_raisedead_cast();
 		print_success_status();
 		temp_cast_amount = 0;
+		
+#ifdef _HEADLESS
+		output_cast_disbelieve(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
+#endif
 	}
 	target_square_found = 1;
 }

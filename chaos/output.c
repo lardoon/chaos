@@ -8,6 +8,14 @@ void get_xy(int, uint8_t*, uint8_t*);
 int get_owner(int);
 int get_spell(int);
 
+#define OUTPUT_ACTION_CAST 0
+#define OUTPUT_ACTION_KILLED 1
+#define OUTPUT_ACTION_ALL_CREATURES_DESTROYED 2
+#define OUTPUT_ACTION_WIZARD_KILLED 3
+#define OUTPUT_ACTION_MAGIC_ATTACK 4
+#define OUTPUT_ACTION_DISMOUNT 5
+#define OUTPUT_ACTION_MOVE 6
+
 #define OUTPUT_WIZARD_KEY "wizard"
 #define OUTPUT_TARGET_WIZARD_KEY "target_wizard"
 #define OUTPUT_SOURCE_POSITION_KEY "source_position"
@@ -17,6 +25,7 @@ int get_spell(int);
 #define OUTPUT_TARGET_KEY "target"
 #define OUTPUT_SUCCESS_KEY "success"
 #define OUTPUT_ILLUSION_KEY "illusion"
+#define OUTPUT_FLYING_KEY "flying"
 
 #define OUTPUT_FILE "output.json"
 
@@ -45,7 +54,7 @@ void output_cast_creature(uint8_t current_player, uint8_t source_index, uint8_t 
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
 		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
-		jw_key(OUTPUT_ACTION_KEY); jw_string("cast");
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_CAST);
 		jw_key(OUTPUT_SPELL_KEY); jw_int(spell);
 		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(target_index);
 		jw_key(OUTPUT_SUCCESS_KEY); jw_bool(success);
@@ -61,7 +70,7 @@ void output_cast_disbelieve(uint8_t current_player, uint8_t source_index, uint8_
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
 		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
-		jw_key(OUTPUT_ACTION_KEY); jw_string("cast");
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_CAST);
 		jw_key(OUTPUT_SPELL_KEY); jw_int(spell);
 		jw_key(OUTPUT_TARGET_KEY);	jw_int(target);
 		jw_key(OUTPUT_TARGET_WIZARD_KEY); jw_int(target_wizard);
@@ -71,15 +80,109 @@ void output_cast_disbelieve(uint8_t current_player, uint8_t source_index, uint8_
 	write(json);
 }
 
-void output_cast_fail(uint8_t current_player, uint8_t source_index, uint8_t spell) {
+void output_cast(uint8_t current_player, uint8_t source_index, uint8_t spell, uint8_t success) {
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
 		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
-		jw_key(OUTPUT_ACTION_KEY); jw_string("cast");
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_CAST);
 		jw_key(OUTPUT_SPELL_KEY); jw_int(spell);
-		jw_key(OUTPUT_SUCCESS_KEY); jw_bool(0);
+		jw_key(OUTPUT_SUCCESS_KEY); jw_bool(success);
 	jwClose();
 	write(json);
 }
 
+void output_cast_success(uint8_t current_player, uint8_t source_index, uint8_t spell) {
+	output_cast(current_player, source_index, spell, 1);
+}
+
+void output_cast_fail(uint8_t current_player, uint8_t source_index, uint8_t spell) {
+	output_cast(current_player, source_index, spell, 0);
+}
+
+void output_wizard_all_creatures_destroyed(uint8_t player, uint8_t index) {
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(player);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_ALL_CREATURES_DESTROYED);
+	jwClose();
+	write(json);
+}
+
+void output_creature_killed(uint8_t current_player, uint8_t source_index, uint8_t target_index, uint8_t illusion) {
+	int target_wizard = get_owner(target_index);
+	int target = get_spell(target_index);
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
+		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_KILLED);
+		jw_key(OUTPUT_TARGET_KEY); jw_int(target);
+		jw_key(OUTPUT_TARGET_WIZARD_KEY); jw_int(target_wizard);
+		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(target_index);
+		jw_key(OUTPUT_ILLUSION_KEY); jw_bool(illusion);
+	jwClose();
+	write(json);
+}
+
+void output_wizard_killed(uint8_t player, uint8_t index) {
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_TARGET_WIZARD_KEY); jw_int(player);
+		jw_key(OUTPUT_TARGET_POSITION_KEY); coordinates(index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_KILLED);
+	jwClose();
+	write(json);
+}
+
+void output_magic_attack(uint8_t current_player, uint8_t source_index, uint8_t target_index, uint8_t spell, uint8_t success) {
+	int target_wizard = get_owner(target_index);
+	int target = get_spell(target_index);
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
+		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_MAGIC_ATTACK);
+		jw_key(OUTPUT_SPELL_KEY); jw_int(spell);
+		jw_key(OUTPUT_TARGET_KEY);	jw_int(target);
+		jw_key(OUTPUT_TARGET_WIZARD_KEY); jw_int(target_wizard);
+		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(target_index);
+		jw_key(OUTPUT_SUCCESS_KEY); jw_bool(success);
+	jwClose();
+	write(json);
+}
+
+void output_wizard_dismounted(uint8_t player, uint8_t index) {
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_TARGET_WIZARD_KEY); jw_int(player);
+		jw_key(OUTPUT_TARGET_POSITION_KEY); coordinates(index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_DISMOUNT);
+	jwClose();
+	write(json);
+}
+
+void output_movement_creature(uint8_t current_player, uint8_t source_index, uint8_t target_index, uint8_t spell, uint8_t flying) {
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
+		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_MOVE);
+		jw_key(OUTPUT_SPELL_KEY); jw_int(spell);
+		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(target_index);
+		jw_key(OUTPUT_FLYING_KEY); jw_bool(flying);
+	jwClose();
+	write(json);
+}
+
+void output_movement_wizard(uint8_t current_player, uint8_t source_index, uint8_t target_index, uint8_t flying) {
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
+		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_MOVE);
+		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(target_index);
+		jw_key(OUTPUT_FLYING_KEY); jw_bool(flying);
+	jwClose();
+	write(json);
+}

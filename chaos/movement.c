@@ -26,6 +26,10 @@
 #include "chaos/examine.h"
 #include "chaos/spellselect.h"
 
+#ifdef _HEADLESS
+#include "chaos/output.h"
+#endif
+
 int g_highlight_creations = 9;
 unsigned char selected_creature;
 unsigned char tmp_range_attack;
@@ -145,6 +149,9 @@ static void check_engaged(uint8_t index)
 
 static void dismount_wiz(void)
 {
+#ifdef _HEADLESS
+	output_wizard_dismounted(g_chaos_state.current_player, wizard_index);
+#endif
 	/* dismount the wizard */
 	tmp_movement_allowance = 3;
 	tmp_wizard_movement_allowance = 1;
@@ -754,6 +761,7 @@ static void do_successful_move(uint8_t distance_moved)
 	/* flag that we need to remake the CPU movement table */
 	move_table_created = 0;
 
+	int wizard_moving = selected_creature >= WIZARD_INDEX;
 	/* tidy up the start square */
 
 	/*uint8_t start_a0 = arena[0][start_index]; */
@@ -809,6 +817,14 @@ static void do_successful_move(uint8_t distance_moved)
 		/* jump b007... */
 	}
 
+#ifdef _HEADLESS
+	if (wizard_moving) {
+		output_movement_wizard(g_chaos_state.current_player, wizard_index, target_index, tmp_is_flying);
+	}
+	else {
+		output_movement_creature(g_chaos_state.current_player, start_index, target_index, selected_creature, tmp_is_flying);
+	}
+#endif
 	/* b007 */
 	/* do a sound effect... */
 	/* check engaged flag if we haven't moved to a magic wood */
@@ -863,6 +879,9 @@ static void do_successful_move(uint8_t distance_moved)
 /* b310 */
 static void remove_creature(uint8_t creature)
 {
+#ifdef _HEADLESS
+	output_creature_killed(g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
+#endif
 	/* remove the creature in target_index and move there */
 	tmp_engaged_flag = 0;
 	tmp_movement_allowance = 0;
@@ -882,6 +901,7 @@ static void remove_creature(uint8_t creature)
 			do_successful_move(3);
 		}
 	} else {
+
 
 		/* creature doesn't leave a corpse */
 		/* check arena 5 val */

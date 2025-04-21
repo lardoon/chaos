@@ -18,7 +18,9 @@
 #include "chaos/text16.h"
 #include "chaos/input.h"
 
+#ifdef _HEADLESS
 #include "chaos/output.h"
+#endif
 
 void do_creature_spell_if_ok(intptr_t arg)
 {
@@ -300,6 +302,9 @@ static void end_magic_missile(void)
 			kill_wizard();
 		} else {
 			/* remove the creature */
+#ifdef _HEADLESS
+			output_creature_killed(g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
+#endif
 			arena[0][target_index] = 0;
 			if (!Options[OPT_OLD_BUGS]
 					&& arena[5][target_index] != 0) {
@@ -507,7 +512,6 @@ static void do_subversion(void)
 		magic_res++;
 
 		uint8_t r = GetRand(10);
-
 		if (r > magic_res) {
 			/* A possible bug in the original: Subversion succeeded if the random value */
 			/* was less than magic resistance! Fixed here. See code at 85c7. */
@@ -523,6 +527,9 @@ static void do_subversion(void)
 			}
 		}
 	}
+#ifdef _HEADLESS
+	output_cast_disbelieve(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
+#endif
 	end_auto_tree();
 
 }
@@ -1037,18 +1044,30 @@ void do_justice_cast(void)
 	}
 	magres++;
 
-	if (GetRand(10) >= magres) {
+	uint8_t success = (GetRand(10) >= magres);
+#ifdef _HEADLESS
+	output_magic_attack(g_chaos_state.current_player, wizard_index, target_index, current_spell, success);
+#endif
+
+	if (success) {
 		/* spell succeeded... */
 		/* do pop anim */
 		draw_pop_frame_2(target_index);
 		if (arena[0][target_index] >= WIZARD_INDEX) {
 			/* wizard - destroy all his creations! */
 			delay(4);
-			destroy_all_creatures(arena[0][target_index] -
-					      WIZARD_INDEX);
+			uint8_t wizard = arena[0][target_index] - WIZARD_INDEX;
+			destroy_all_creatures(wizard);
+#ifdef _HEADLESS
+			output_wizard_all_creatures_destroyed(wizard, target_index);
+#endif
 		} else {
 			/* single creature only... */
 			/* there's the famous "rise from the dead" bug here... */
+
+#ifdef _HEADLESS
+			output_creature_killed(g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
+#endif
 			arena[0][target_index] = 0;
 			if (arena[4][target_index] != 0) {
 				arena[0][target_index] = arena[4][target_index];
@@ -1176,6 +1195,9 @@ void do_turmoil_cast(void)
 	tc.start_index = start_index;
 	set_spell_success();
 	temp_success_flag = 1;
+#ifdef _HEADLESS
+	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+#endif
 	if (temp_success_flag) {
 		/* unset bit 7 of all things */
 		unset_moved_flags();

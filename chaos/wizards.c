@@ -11,6 +11,10 @@
 #include "chaos/spelldata.h"
 #include "chaos/creature.h"
 
+#ifdef _HEADLESS
+#include "chaos/output.h"
+#endif
+
 /* player data */
 player_data *players = 0;
 
@@ -107,6 +111,10 @@ void kill_wizard(void)
 		arena[0][target_index] = 0;
 		return;
 	}
+#ifdef _HEADLESS
+	output_wizard_killed(deadid, target_index);
+#endif
+
 	pGFX = WizardGFX[players[deadid].image].pGFX;
 	pMap = WizardGFX[players[deadid].image].pMap;
 	move_screen_to(target_index);
@@ -205,7 +213,9 @@ void kill_wizard(void)
 	arena[5][target_index] = 0;
 	delay(10);
 	destroy_all_creatures(deadid);
-
+#ifdef _HEADLESS
+	output_wizard_all_creatures_destroyed(deadid, target_index);
+#endif
 	invalidate_cache();
 	if (!IS_CPU(g_chaos_state.current_player))
 		redraw_cursor();
