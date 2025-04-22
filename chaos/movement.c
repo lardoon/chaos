@@ -1073,6 +1073,10 @@ static void make_attack(void)
 	}
 	if (defending_val < attacking_val) {
 
+#ifdef _HEADLESS
+		output_attack(g_chaos_state.current_player, start_index, target_index, tmp_range_attack, 1);
+#endif
+
 		/* attack was a success... */
 		if (arena[4][target_index] == 0) {
 
@@ -1122,7 +1126,9 @@ static void make_attack(void)
 			end_movement();
 		}
 	} else {
-
+#ifdef _HEADLESS
+		output_attack(g_chaos_state.current_player, start_index, target_index, tmp_range_attack, 0);
+#endif
 		/* attack fails... */
 		/* jump b06f */
 		end_movement();

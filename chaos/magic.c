@@ -709,6 +709,9 @@ static void end_shield(void)
 static void do_shield_cast(void)
 {
 	setup_wizard_spell();
+#ifdef _HEADLESS
+	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+#endif
 	end_shield();
 	print_success_status();
 	wait_for_keypress();
@@ -745,6 +748,9 @@ static void end_armour(void)
 static void do_armour_cast(void)
 {
 	setup_wizard_spell();
+#ifdef _HEADLESS
+	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+#endif
 	end_armour();
 	wait_for_keypress();
 	wait_for_letgo();
@@ -780,6 +786,9 @@ static void end_sword(void)
 static void do_sword_cast(void)
 {
 	setup_wizard_spell();
+#ifdef _HEADLESS
+	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+#endif
 	end_sword();
 	wait_for_keypress();
 	wait_for_letgo();
@@ -815,6 +824,9 @@ static void end_knife_cast(void)
 static void do_knife_cast(void)
 {
 	setup_wizard_spell();
+#ifdef _HEADLESS
+	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+#endif
 	end_knife_cast();
 	wait_for_keypress();
 	wait_for_letgo();
@@ -851,6 +863,9 @@ static void end_bow_cast(void)
 static void do_bow_cast(void)
 {
 	setup_wizard_spell();
+#ifdef _HEADLESS
+	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+#endif
 	end_bow_cast();
 	wait_for_keypress();
 	wait_for_letgo();
@@ -919,6 +934,9 @@ static void end_shadowform_cast(void)
 static void do_shadowform_cast(void)
 {
 	setup_wizard_spell();
+#ifdef _HEADLESS
+	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+#endif
 	end_shadowform_cast();
 	wait_for_keypress();
 	wait_for_letgo();

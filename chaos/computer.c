@@ -1071,6 +1071,10 @@ void ai_cast_magic_missile(void)
 					/* spell is good! */
 					target_square_found = 1;
 					temp_cast_amount = 0;
+					
+#ifdef _HEADLESS
+					output_cast_disbelieve(g_chaos_state.current_player, wizard_index, target_index, current_spell, 1);
+#endif
 
 					/* cas tthe actual spell... */
 					print_name_spell();

@@ -15,6 +15,7 @@ int get_spell(int);
 #define OUTPUT_ACTION_MAGIC_ATTACK 4
 #define OUTPUT_ACTION_DISMOUNT 5
 #define OUTPUT_ACTION_MOVE 6
+#define OUTPUT_ACTION_ATTACK 7
 
 #define OUTPUT_WIZARD_KEY "wizard"
 #define OUTPUT_TARGET_WIZARD_KEY "target_wizard"
@@ -26,8 +27,10 @@ int get_spell(int);
 #define OUTPUT_SUCCESS_KEY "success"
 #define OUTPUT_ILLUSION_KEY "illusion"
 #define OUTPUT_FLYING_KEY "flying"
+#define OUTPUT_RANGED_ATTACK_KEY "ranged"
+#define OUTPUT_SOURCE_KEY "source"
 
-#define OUTPUT_FILE "output.json"
+#define OUTPUT_FILE "output.json" 
 
 #define OUTPUT_BUFFER_SIZE 1024
 
@@ -183,6 +186,25 @@ void output_movement_wizard(uint8_t current_player, uint8_t source_index, uint8_
 		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_MOVE);
 		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(target_index);
 		jw_key(OUTPUT_FLYING_KEY); jw_bool(flying);
+	jwClose();
+	write(json);
+}
+
+void output_attack(uint8_t current_player, uint8_t source_index, uint8_t target_index, uint8_t ranged, uint8_t success) {
+	int target_wizard = get_owner(target_index);
+	int target = get_spell(target_index);
+	int source = get_spell(source_index);
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
+		jw_key(OUTPUT_SOURCE_KEY);	jw_int(source);
+		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_ATTACK);
+		jw_key(OUTPUT_TARGET_KEY);	jw_int(target);
+		jw_key(OUTPUT_TARGET_WIZARD_KEY); jw_int(target_wizard);
+		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(target_index);
+		jw_key(OUTPUT_SUCCESS_KEY); jw_bool(success);
+		jw_key(OUTPUT_RANGED_ATTACK_KEY); jw_bool(ranged);
 	jwClose();
 	write(json);
 }
