@@ -580,12 +580,27 @@ static void show_draw(void)
 	set_text16_colour(10, RGB16(30, 31, 0));	/* yellow */
 	print_text16(_("THE CONTEST IS DRAWN BETWEEN"), 1, 1, 10);
 	uint8_t y = 3, i;
+	int count = 0;
+	
 	for (i = 0; i < g_chaos_state.playercount; i++) {
 		if (!IS_WIZARD_DEAD(players[i].modifier_flag)) {
 			print_text16(players[i].name, 9, y, 13);
 			y += 2;
+			count++;
 		}
 	}
+#ifdef _HEADLESS
+	uint8_t* _players = malloc(sizeof(uint8_t) * count);
+	int c = 0;
+	for (i = 0; i < g_chaos_state.playercount; i++) {
+		if (!IS_WIZARD_DEAD(players[i].modifier_flag)) {
+			_players[c] = i;
+			c++;
+		}
+	}
+	output_draw(count, _players);
+	free(_players);
+#endif
 }
 
 static void drawn_contest(void)
@@ -1573,6 +1588,9 @@ static void show_win_screen(void)
 			break;
 		}
 	}
+#ifdef _HEADLESS
+	output_win(winner);
+#endif
 
 	/* clear arena screen... */
 	remove_cursor();

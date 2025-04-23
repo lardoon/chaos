@@ -122,6 +122,9 @@ static void do_one_auto_tree(struct auto_tree *data)
 			spell_animation();
 			/* check success... */
 			if (temp_success_flag) {
+#ifdef _HEADLESS
+				output_cast(g_chaos_state.current_player, target_index, current_spell, temp_success_flag);
+#endif
 				arena[0][target_index] = current_spell;
 				arena[3][target_index] = g_chaos_state.current_player;
 				delay(10);
@@ -142,6 +145,9 @@ static void auto_cast_trees_castles(void)
 	uint8_t tmp_cast_range = 0xD;
 
 	set_spell_success();
+#ifdef _HEADLESS
+	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+#endif
 	LUT_index = create_range_table(current_location, tmp_cast_range);
 	LUT_index = LUT_index * 2 + 1;
 	struct auto_tree data;

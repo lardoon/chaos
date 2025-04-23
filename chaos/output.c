@@ -16,6 +16,8 @@ int get_spell(int);
 #define OUTPUT_ACTION_DISMOUNT 5
 #define OUTPUT_ACTION_MOVE 6
 #define OUTPUT_ACTION_ATTACK 7
+#define OUTPUT_WIN 8
+#define OUTPUT_DRAW 9
 
 #define OUTPUT_WIZARD_KEY "wizard"
 #define OUTPUT_TARGET_WIZARD_KEY "target_wizard"
@@ -205,6 +207,29 @@ void output_attack(uint8_t current_player, uint8_t source_index, uint8_t target_
 		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(target_index);
 		jw_key(OUTPUT_SUCCESS_KEY); jw_bool(success);
 		jw_key(OUTPUT_RANGED_ATTACK_KEY); jw_bool(ranged);
+	jwClose();
+	write(json);
+}
+
+void output_win(uint8_t player) {
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(player);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_WIN);
+	jwClose();
+	write(json);
+}
+
+void output_draw(int count, uint8_t* players) {
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+	jw_key(OUTPUT_WIZARD_KEY);
+		jw_array();
+			for (int c = 0; c < count; c++) {
+				jw_int(players[c]);
+			}
+		jwEnd();
+	jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_DRAW);
 	jwClose();
 	write(json);
 }
