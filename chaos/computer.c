@@ -862,7 +862,7 @@ void ai_cast_creature(void)
 		set_spell_success();
 		
 #ifdef _HEADLESS
-		output_cast_creature(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag, temp_illusion_flag);
+		output_cast_creature(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag, temp_illusion_flag);
 #endif
 
 		print_name_spell();
@@ -1073,7 +1073,7 @@ void ai_cast_magic_missile(void)
 					temp_cast_amount = 0;
 					
 #ifdef _HEADLESS
-					output_cast_disbelieve(g_chaos_state.current_player, wizard_index, target_index, current_spell, 1);
+					output_cast_disbelieve(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, current_spell, 1);
 #endif
 
 					/* cas tthe actual spell... */
@@ -1182,7 +1182,7 @@ static void one_wall_cast(void)
 		}
 		/* we have found a suitable square... */
 #ifdef _HEADLESS
-		output_cast_creature(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag, 0);
+		output_cast_creature(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag, 0);
 #endif
 		do_wall_cast();
 		if (tmp_square_found == 0) {
@@ -1227,7 +1227,7 @@ void ai_cast_wall(void)
 
 #ifdef _HEADLESS
 	if (temp_success_flag == 0) {
-		output_cast_fail(g_chaos_state.current_player, wizard_index, current_spell);
+		output_cast_fail(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell);
 	}
 #endif
 	print_name_spell();
@@ -1261,13 +1261,13 @@ void ai_cast_justice(void)
 		print_success_status();
 
 #ifdef _HEADLESS
-		output_cast_fail(g_chaos_state.current_player, wizard_index, current_spell);
+		output_cast_fail(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell);
 #endif
 		return;
 	}
 
 #ifdef _HEADLESS
-	output_cast_success(g_chaos_state.current_player, wizard_index, current_spell);
+	output_cast_success(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell);
 #endif
 
 	uint8_t tmp_start = wizard_index;
@@ -1375,7 +1375,7 @@ void ai_cast_raisedead(void)
 		temp_cast_amount = 0;
 		
 #ifdef _HEADLESS
-		output_cast_disbelieve(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
+		output_cast_disbelieve(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
 #endif
 	}
 	target_square_found = 1;

@@ -112,7 +112,7 @@ void kill_wizard(void)
 		return;
 	}
 #ifdef _HEADLESS
-	output_wizard_killed(deadid, target_index);
+	output_wizard_killed(g_chaos_state.world_chaos, g_chaos_state.round_count, deadid, target_index);
 #endif
 
 	pGFX = WizardGFX[players[deadid].image].pGFX;
@@ -214,7 +214,7 @@ void kill_wizard(void)
 	delay(10);
 	destroy_all_creatures(deadid);
 #ifdef _HEADLESS
-	output_wizard_all_creatures_destroyed(deadid, target_index);
+	output_wizard_all_creatures_destroyed(g_chaos_state.world_chaos, g_chaos_state.round_count, deadid, target_index);
 #endif
 	invalidate_cache();
 	if (!IS_CPU(g_chaos_state.current_player))

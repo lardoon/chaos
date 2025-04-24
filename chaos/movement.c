@@ -150,7 +150,7 @@ static void check_engaged(uint8_t index)
 static void dismount_wiz(void)
 {
 #ifdef _HEADLESS
-	output_wizard_dismounted(g_chaos_state.current_player, wizard_index);
+	output_wizard_dismounted(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index);
 #endif
 	/* dismount the wizard */
 	tmp_movement_allowance = 3;
@@ -598,7 +598,7 @@ static void show_draw(void)
 			c++;
 		}
 	}
-	output_draw(count, _players);
+	output_draw(g_chaos_state.world_chaos, g_chaos_state.round_count, count, _players);
 	free(_players);
 #endif
 }
@@ -834,10 +834,10 @@ static void do_successful_move(uint8_t distance_moved)
 
 #ifdef _HEADLESS
 	if (wizard_moving) {
-		output_movement_wizard(g_chaos_state.current_player, wizard_index, target_index, tmp_is_flying);
+		output_movement_wizard(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, tmp_is_flying);
 	}
 	else {
-		output_movement_creature(g_chaos_state.current_player, start_index, target_index, selected_creature, tmp_is_flying);
+		output_movement_creature(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, start_index, target_index, selected_creature, tmp_is_flying);
 	}
 #endif
 	/* b007 */
@@ -895,7 +895,7 @@ static void do_successful_move(uint8_t distance_moved)
 static void remove_creature(uint8_t creature)
 {
 #ifdef _HEADLESS
-	output_creature_killed(g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
+	output_creature_killed(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
 #endif
 	/* remove the creature in target_index and move there */
 	tmp_engaged_flag = 0;
@@ -1089,7 +1089,7 @@ static void make_attack(void)
 	if (defending_val < attacking_val) {
 
 #ifdef _HEADLESS
-		output_attack(g_chaos_state.current_player, start_index, target_index, tmp_range_attack, 1);
+		output_attack(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, start_index, target_index, tmp_range_attack, 1);
 #endif
 
 		/* attack was a success... */
@@ -1142,7 +1142,7 @@ static void make_attack(void)
 		}
 	} else {
 #ifdef _HEADLESS
-		output_attack(g_chaos_state.current_player, start_index, target_index, tmp_range_attack, 0);
+		output_attack(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, start_index, target_index, tmp_range_attack, 0);
 #endif
 		/* attack fails... */
 		/* jump b06f */
@@ -1589,7 +1589,7 @@ static void show_win_screen(void)
 		}
 	}
 #ifdef _HEADLESS
-	output_win(winner);
+	output_win(g_chaos_state.world_chaos, g_chaos_state.round_count, winner);
 #endif
 
 	/* clear arena screen... */

@@ -123,7 +123,7 @@ static void do_one_auto_tree(struct auto_tree *data)
 			/* check success... */
 			if (temp_success_flag) {
 #ifdef _HEADLESS
-				output_cast(g_chaos_state.current_player, target_index, current_spell, temp_success_flag);
+				output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, target_index, current_spell, temp_success_flag);
 #endif
 				arena[0][target_index] = current_spell;
 				arena[3][target_index] = g_chaos_state.current_player;
@@ -146,7 +146,7 @@ static void auto_cast_trees_castles(void)
 
 	set_spell_success();
 #ifdef _HEADLESS
-	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+	output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
 #endif
 	LUT_index = create_range_table(current_location, tmp_cast_range);
 	LUT_index = LUT_index * 2 + 1;
@@ -309,7 +309,7 @@ static void end_magic_missile(void)
 		} else {
 			/* remove the creature */
 #ifdef _HEADLESS
-			output_creature_killed(g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
+			output_creature_killed(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
 #endif
 			arena[0][target_index] = 0;
 			if (!Options[OPT_OLD_BUGS]
@@ -534,7 +534,7 @@ static void do_subversion(void)
 		}
 	}
 #ifdef _HEADLESS
-	output_cast_disbelieve(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
+	output_cast_disbelieve(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
 #endif
 	end_auto_tree();
 
@@ -716,7 +716,7 @@ static void do_shield_cast(void)
 {
 	setup_wizard_spell();
 #ifdef _HEADLESS
-	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+	output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
 #endif
 	end_shield();
 	print_success_status();
@@ -755,7 +755,7 @@ static void do_armour_cast(void)
 {
 	setup_wizard_spell();
 #ifdef _HEADLESS
-	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+	output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
 #endif
 	end_armour();
 	wait_for_keypress();
@@ -793,7 +793,7 @@ static void do_sword_cast(void)
 {
 	setup_wizard_spell();
 #ifdef _HEADLESS
-	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+	output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
 #endif
 	end_sword();
 	wait_for_keypress();
@@ -831,7 +831,7 @@ static void do_knife_cast(void)
 {
 	setup_wizard_spell();
 #ifdef _HEADLESS
-	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+	output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
 #endif
 	end_knife_cast();
 	wait_for_keypress();
@@ -870,7 +870,7 @@ static void do_bow_cast(void)
 {
 	setup_wizard_spell();
 #ifdef _HEADLESS
-	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+	output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
 #endif
 	end_bow_cast();
 	wait_for_keypress();
@@ -941,7 +941,7 @@ static void do_shadowform_cast(void)
 {
 	setup_wizard_spell();
 #ifdef _HEADLESS
-	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+	output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
 #endif
 	end_shadowform_cast();
 	wait_for_keypress();
@@ -1070,7 +1070,7 @@ void do_justice_cast(void)
 
 	uint8_t success = (GetRand(10) >= magres);
 #ifdef _HEADLESS
-	output_magic_attack(g_chaos_state.current_player, wizard_index, target_index, current_spell, success);
+	output_magic_attack(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, current_spell, success);
 #endif
 
 	if (success) {
@@ -1083,14 +1083,14 @@ void do_justice_cast(void)
 			uint8_t wizard = arena[0][target_index] - WIZARD_INDEX;
 			destroy_all_creatures(wizard);
 #ifdef _HEADLESS
-			output_wizard_all_creatures_destroyed(wizard, target_index);
+			output_wizard_all_creatures_destroyed(g_chaos_state.world_chaos, g_chaos_state.round_count, wizard, target_index);
 #endif
 		} else {
 			/* single creature only... */
 			/* there's the famous "rise from the dead" bug here... */
 
 #ifdef _HEADLESS
-			output_creature_killed(g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
+			output_creature_killed(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, IS_ILLUSION(arena[3][target_index]));
 #endif
 			arena[0][target_index] = 0;
 			if (arena[4][target_index] != 0) {
@@ -1193,7 +1193,7 @@ void cast_disbelieve(void)
 		if (target_square_found) {
 			do_disbelieve_cast();
 #ifdef _HEADLESS
-			output_cast_disbelieve(g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
+			output_cast_disbelieve(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, target_index, current_spell, temp_success_flag);
 #endif
 		}
 
@@ -1220,7 +1220,7 @@ void do_turmoil_cast(void)
 	set_spell_success();
 	temp_success_flag = 1;
 #ifdef _HEADLESS
-	output_cast(g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
+	output_cast(g_chaos_state.world_chaos, g_chaos_state.round_count, g_chaos_state.current_player, wizard_index, current_spell, temp_success_flag);
 #endif
 	if (temp_success_flag) {
 		/* unset bit 7 of all things */
