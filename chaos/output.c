@@ -18,6 +18,8 @@ int get_spell(int);
 #define OUTPUT_ACTION_ATTACK 7
 #define OUTPUT_WIN 8
 #define OUTPUT_DRAW 9
+#define OUTPUT_DESTROYED 10
+#define OUTPUT_NEW_SPELL 11
 
 #define OUTPUT_WIZARD_KEY "wizard"
 #define OUTPUT_TARGET_WIZARD_KEY "target_wizard"
@@ -130,7 +132,7 @@ void output_creature_killed(int8_t chaos, uint8_t round, uint8_t current_player,
 	int target = get_spell(target_index);
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
 		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
@@ -146,11 +148,11 @@ void output_creature_killed(int8_t chaos, uint8_t round, uint8_t current_player,
 void output_wizard_killed(int8_t chaos, uint8_t round, uint8_t player, uint8_t index) {
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_TARGET_WIZARD_KEY); jw_int(player);
 		jw_key(OUTPUT_TARGET_POSITION_KEY); coordinates(index);
-		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_KILLED);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_ACTION_WIZARD_KILLED);
 	jwClose();
 	write(json);
 }
@@ -160,7 +162,7 @@ void output_magic_attack(int8_t chaos, uint8_t round, uint8_t current_player, ui
 	int target = get_spell(target_index);
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
 		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
@@ -177,7 +179,7 @@ void output_magic_attack(int8_t chaos, uint8_t round, uint8_t current_player, ui
 void output_wizard_dismounted(int8_t chaos, uint8_t round, uint8_t player, uint8_t index) {
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_TARGET_WIZARD_KEY); jw_int(player);
 		jw_key(OUTPUT_TARGET_POSITION_KEY); coordinates(index);
@@ -189,7 +191,7 @@ void output_wizard_dismounted(int8_t chaos, uint8_t round, uint8_t player, uint8
 void output_movement_creature(int8_t chaos, uint8_t round, uint8_t current_player, uint8_t source_index, uint8_t target_index, uint8_t spell, uint8_t flying) {
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
 		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
@@ -204,7 +206,7 @@ void output_movement_creature(int8_t chaos, uint8_t round, uint8_t current_playe
 void output_movement_wizard(int8_t chaos, uint8_t round, uint8_t current_player, uint8_t source_index, uint8_t target_index, uint8_t flying) {
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
 		jw_key(OUTPUT_SOURCE_POSITION_KEY);	coordinates(source_index);
@@ -221,7 +223,7 @@ void output_attack(int8_t chaos, uint8_t round, uint8_t current_player, uint8_t 
 	int source = get_spell(source_index);
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(current_player);
 		jw_key(OUTPUT_SOURCE_KEY);	jw_int(source);
@@ -239,7 +241,7 @@ void output_attack(int8_t chaos, uint8_t round, uint8_t current_player, uint8_t 
 void output_win(int8_t chaos, uint8_t round, uint8_t player) {
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_WIZARD_KEY); jw_int(player);
 		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_WIN);
@@ -250,7 +252,7 @@ void output_win(int8_t chaos, uint8_t round, uint8_t player) {
 void output_draw(int8_t chaos, uint8_t round, int count, uint8_t* players) {
 	char json[OUTPUT_BUFFER_SIZE];
 	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
-	jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
 		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
 		jw_key(OUTPUT_WIZARD_KEY);
 			jw_array();
@@ -259,6 +261,35 @@ void output_draw(int8_t chaos, uint8_t round, int count, uint8_t* players) {
 				}
 			jwEnd();
 		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_DRAW);
+	jwClose();
+	write(json);
+}
+
+
+void output_destroyed(int8_t chaos, uint8_t round, uint8_t index) {
+	uint8_t owner = get_owner(index);
+	uint8_t spell = get_spell(index);
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(owner);
+		jw_key(OUTPUT_TARGET_KEY); jw_int(spell);
+		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_DESTROYED);
+	jwClose();
+	write(json);
+}
+
+void output_new_spell(int8_t chaos, uint8_t round, uint8_t player, uint8_t index, uint8_t spell) {
+	char json[OUTPUT_BUFFER_SIZE];
+	jwOpen(json, OUTPUT_BUFFER_SIZE, JW_OBJECT, JW_COMPACT);
+		jw_key(OUTPUT_CHAOS_KEY); jw_int(chaos);
+		jw_key(OUTPUT_ROUND_KEY); jw_int(round);
+		jw_key(OUTPUT_WIZARD_KEY); jw_int(player);
+		jw_key(OUTPUT_TARGET_KEY); jw_int(spell);
+		jw_key(OUTPUT_TARGET_POSITION_KEY);	coordinates(index);
+		jw_key(OUTPUT_ACTION_KEY); jw_int(OUTPUT_NEW_SPELL);
 	jwClose();
 	write(json);
 }

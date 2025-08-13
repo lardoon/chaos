@@ -28,6 +28,8 @@
 #include "chaos/splash.h"
 #include "chaos/rand.h"
 
+#include "chaos/output.h"
+
 static int hilite_wizard_item;
 
 static const char *const s_default_names[22] = {
@@ -589,7 +591,7 @@ void animate_player_screen(void)
 		anim_selection(hilite_item - 1, 0, 31, 31);
 }
 
-void new_random_spell(intptr_t arg)
+void new_random_spell(intptr_t arg, int index)
 {
 	int lucky_player = (int)arg;
 	if (lucky_player > 7)
@@ -618,6 +620,9 @@ void new_random_spell(intptr_t arg)
 		}
 		k += 2;
 	}
+#ifdef _HEADLESS
+	output_new_spell(g_chaos_state.world_chaos, g_chaos_state.round_count, lucky_player, index, randspell);
+#endif
 }
 
 void create_players_touch(int x, int y)

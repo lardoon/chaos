@@ -16,7 +16,7 @@ void create_players_touch(int x, int y);
 void create_players_back(void);
 void animate_player_screen(void);
 unsigned char get_next_human(unsigned char id);
-void new_random_spell(intptr_t arg);
+void new_random_spell(intptr_t arg, int index);
 void init_players(void);
 void create_default_wizs(void);
 

@@ -1,4 +1,5 @@
 /* movement.c */
+#include <stdlib.h>
 #include <string.h>
 #include "chaos/platform.h"
 #include "chaos/porting.h"

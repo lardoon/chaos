@@ -970,7 +970,7 @@ static void do_meditate_cast(void)
 	setup_wizard_spell();
 	if (temp_success_flag) {
 		/* new spell */
-		new_random_spell(g_chaos_state.current_player);
+		new_random_spell(g_chaos_state.current_player, wizard_index);
 		delay(4);
 	}
 	print_success_status();

@@ -17,4 +17,6 @@ void output_movement_wizard(int8_t chaos, uint8_t round, uint8_t current_player,
 void output_attack(int8_t chaos, uint8_t round, uint8_t current_player, uint8_t source_index, uint8_t target_index, uint8_t ranged, uint8_t success);
 void output_win(int8_t chaos, uint8_t round, uint8_t player);
 void output_draw(int8_t chaos, uint8_t round, int count, uint8_t* players);
+void output_destroyed(int8_t chaos, uint8_t round, uint8_t index);
+void output_new_spell(int8_t chaos, uint8_t round, uint8_t player, uint8_t index, uint8_t spell);
 #endif

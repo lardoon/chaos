@@ -17,6 +17,7 @@
 #include "chaos/options.h"
 #include "chaos/text16.h"
 #include "chaos/examine.h"
+#include "chaos/output.h"
 unsigned char **arena = 0;	/* the 6 arena tables... 960 bytes */
 unsigned char wizard_index;	/* index into arena of current player */
 unsigned char start_index;	/* index into arena for start square of current spell */
@@ -781,6 +782,10 @@ void destroy_castles(void)
 			arena[0][i] = arena[4][i];
 			arena[4][i] = 0;
 			target_index = i;
+			
+#ifdef _HEADLESS
+			output_destroyed(g_chaos_state.world_chaos, g_chaos_state.round_count, target_index);
+#endif
 			pop_animation();
 			delay(4); /* one frame */
 		}
@@ -821,6 +826,7 @@ static int post_new_spell(int i)
 	arena[0][i] = arena[4][i];
 	arena[4][i] = 0;
 	arena[3][i] = lucky_player;	/* bug here, what if the wizard was undead? ;) */
+
 	return 0;
 }
 
@@ -837,7 +843,7 @@ void random_new_spell(void)
 
 			/* got here? then the wood has given us a spell! */
 			int lucky_player = arena[4][i] - WIZARD_INDEX;
-			new_random_spell(lucky_player);
+			new_random_spell(lucky_player, i);
 			post_new_spell(i);
 			delay(20);
 		}
@@ -1104,11 +1110,12 @@ int str_to_arena(int layer, const char *data)
 		platform_dprint(str);
 	}
 #endif
-
+#ifndef _HEADLESS
 	if (ch2 != ch)
 		return -1;
 	if (ch2_xor != ch_xor)
 		return -1;
+#endif
 	return 0;
 }
 
